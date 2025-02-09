@@ -1,0 +1,7 @@
+.pageFooterWrapper {
+    @apply w-full h-[65px] flex items-center justify-between px-[20px] md:px-16;
+}
+
+.pageFooterCopyRightText {
+    @apply w-full h-full flex flex-row items-center justify-center text-center text-sm text-[#707784];
+}

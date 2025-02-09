@@ -1,0 +1,16 @@
+.pageHeaderWrapper {
+    @apply w-full h-[65px] flex items-center justify-center;
+    box-shadow: 0px 1px 2px 0px #00000040;
+}
+
+.pageHeaderContainer {
+    @apply w-full h-full max-w-7xl flex items-center justify-between mx-[20px];
+}
+
+.pageHeaderShoppingBagGroup {
+    @apply w-auto h-full flex justify-start items-center gap-[4px];
+}
+
+.pageHeaderShoppingBagItemsCount {
+    @apply text-sm font-medium text-[#707784];
+}
