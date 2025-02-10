@@ -6,11 +6,3 @@
 .pageHeaderContainer {
     @apply w-full h-full max-w-7xl flex items-center justify-between mx-[20px];
 }
-
-.pageHeaderShoppingBagGroup {
-    @apply w-auto h-full flex justify-start items-center gap-[4px];
-}
-
-.pageHeaderShoppingBagItemsCount {
-    @apply text-sm font-medium text-[#707784];
-}

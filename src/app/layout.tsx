@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import cn from "classnames";
+import { GlobalProvider } from "@/src/contexts/global-context";
 import PageHeader from "@/src/components/page-header";
 import PageFooter from "@/src/components/page-footer";
 
@@ -21,12 +22,14 @@ interface IRootLayoutProps {
 
 export default function RootLayout({ children }: IRootLayoutProps) {
     return (
-        <html lang="en">
-            <body className={cn("relative h-full antialiased", inter.className)}>
-                <PageHeader />
-                {children}
-                <PageFooter />
-            </body>
-        </html>
+        <GlobalProvider>
+            <html lang="en">
+                <body className={cn("relative h-full antialiased", inter.className)}>
+                    <PageHeader />
+                    {children}
+                    <PageFooter />
+                </body>
+            </html>
+        </GlobalProvider>
     );
 }

@@ -76,25 +76,25 @@ const ProductCard = ({ product }: { product: IProducts }) => {
     };
 
     return (
-        <div className={styles.productCardWrapper}>
-            <div className={styles.productCardImageContainer}>
+        <div className={styles.productCardMiniWrapper}>
+            <div className={styles.productCardMiniImageContainer}>
                 <Image
-                    className={styles.productCardImage}
+                    className={styles.productCardMiniImage}
                     src={product.image}
                     width={214.28}
                     height={285}
                     alt={product.description}
                 />
             </div>
-            <div className={styles.productCardDetailsContainer}>
-                <div className={styles.productCardTitle}>{product.title}</div>
-                <div className={styles.productCardPriceRatingGroup}>
-                    <div className={styles.productCardPrice}>${parseFloat(product.price).toFixed(2)}</div>
-                    <div className={styles.productCardRatingGroup}>
-                        <div className={styles.productCardStarsGroup}>
+            <div className={styles.productCardMiniDetailsContainer}>
+                <div className={styles.productCardMiniTitle}>{product.title}</div>
+                <div className={styles.productCardMiniPriceRatingGroup}>
+                    <div className={styles.productCardMiniPrice}>${parseFloat(product.price).toFixed(2)}</div>
+                    <div className={styles.productCardMiniRatingGroup}>
+                        <div className={styles.productCardMiniStarsGroup}>
                             {generateStarsFromRating(product.rating.rate)}
                         </div>
-                        <div className={styles.productCardRatingCount}>({product.rating.count})</div>
+                        <div className={styles.productCardMiniRatingCount}>({product.rating.count})</div>
                     </div>
                 </div>
                 <Button

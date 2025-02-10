@@ -1,0 +1,7 @@
+.shoppingBagCTAGroup {
+    @apply w-auto h-full flex justify-start items-center gap-[4px];
+}
+
+.shoppingBagCTAItemsCount {
+    @apply text-sm font-medium text-[#707784];
+}

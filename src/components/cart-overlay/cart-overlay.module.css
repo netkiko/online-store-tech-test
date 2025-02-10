@@ -1,0 +1,19 @@
+.cartOverlayDialog {
+    @apply modal modal-open w-full items-start;
+}
+
+.cartOverlayWrapper {
+    @apply modal-box max-w-full flex-col mt-[65px] w-full py-[20px] px-[10px];
+}
+
+.cartOverlayHeaderWrapper {
+    @apply w-full flex items-center justify-between;
+}
+
+.cartOverlayTitle {
+    @apply font-bold text-lg text-left text-[#000000];
+}
+
+.cartOverlayDivider {
+    @apply w-full h-px mt-[16px];
+}

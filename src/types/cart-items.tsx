@@ -1,4 +1,4 @@
-export interface IProducts {
+export interface ICartItems {
     id: number;
     title: number;
     price: number;
@@ -9,4 +9,6 @@ export interface IProducts {
         rate: number;
         count: number;
     };
+    quantity: number;
+    amount: number;
 }

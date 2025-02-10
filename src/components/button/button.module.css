@@ -1,0 +1,7 @@
+.btnPrimary {
+    @apply btn btn-primary w-full rounded-xl font-bold mt-[20px];
+}
+
+.btnSecondary {
+    @apply btn btn-success w-full rounded-xl text-white font-bold mt-[20px];
+}
