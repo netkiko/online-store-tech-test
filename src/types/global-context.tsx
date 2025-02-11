@@ -8,6 +8,7 @@ export interface IGlobalContext {
     showCartOverlay: boolean;
     addCartItem: (product: IProducts) => void;
     deleteCartItem: (id: number) => void;
+    updateOrderQuantity: (id: number, quantity: number) => void;
     launchCartOverlay: () => void;
     hideCartOverlay: () => void;
 }

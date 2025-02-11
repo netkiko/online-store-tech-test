@@ -10,69 +10,27 @@ import styles from "./product-card.module.css";
 const ProductCard = ({ product }: { product: IProducts }) => {
     const { addCartItem } = useGlobalContext();
 
-    const generateStarsFromRating = (rating: number) => {
-        switch (Math.round(rating)) {
-            case 5:
-                return (
-                    <>
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                    </>
-                );
-            case 4:
-                return (
-                    <>
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                    </>
-                );
-            case 3:
-                return (
-                    <>
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                    </>
-                );
-            case 2:
-                return (
-                    <>
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                    </>
-                );
-            case 1:
-                return (
-                    <>
-                        <Star color="#fabe3a" fill="#fabe3a" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                    </>
-                );
-            default:
-                return (
-                    <>
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                        <Star color="#e5e7eb" fill="#e5e7eb" size={24} />
-                    </>
-                );
-        }
+    const generateStarRating = ({ rating, totalStars = 5 }: { rating: number; totalStars: number }) => {
+        const getStarFill = (starValue: number) => {
+            if (starValue <= Math.floor(rating)) return "#fabe3a";
+            if (starValue === Math.ceil(rating) && rating % 1 !== 0) return "url(#half-gradient)";
+            return "#e5e7eb";
+        };
+
+        return (
+            <>
+                <svg width="0" height="0">
+                    <linearGradient id="half-gradient" x1="0" x2="1" y1="0" y2="0">
+                        <stop offset="50%" stopColor="#fabe3a" />
+                        <stop offset="50%" stopColor="#e5e7eb" />
+                    </linearGradient>
+                </svg>
+                {[...Array(totalStars)].map((_, index) => {
+                    const starValue = index + 1;
+                    return <Star key={index} className="w-6 h-6" strokeWidth={0} fill={getStarFill(starValue)} />;
+                })}
+            </>
+        );
     };
 
     return (
@@ -89,10 +47,10 @@ const ProductCard = ({ product }: { product: IProducts }) => {
             <div className={styles.productCardDetailsContainer}>
                 <div className={styles.productCardTitle}>{product.title}</div>
                 <div className={styles.productCardPriceRatingGroup}>
-                    <div className={styles.productCardPrice}>${parseFloat(product.price).toFixed(2)}</div>
+                    <div className={styles.productCardPrice}>${parseFloat(product.price.toString()).toFixed(2)}</div>
                     <div className={styles.productCardRatingGroup}>
                         <div className={styles.productCardStarsGroup}>
-                            {generateStarsFromRating(product.rating.rate)}
+                            {generateStarRating({ rating: product.rating.rate, totalStars: 5 })}
                         </div>
                         <div className={styles.productCardRatingCount}>({product.rating.count})</div>
                     </div>

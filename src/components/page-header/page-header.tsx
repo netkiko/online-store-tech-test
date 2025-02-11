@@ -10,10 +10,6 @@ const PageHeader = () => {
                 <Link href="/">
                     <Image src="/images/company-logo.svg" height={25} width={19.45} alt="Company Logo" />
                 </Link>
-                {/* <div className={styles.pageHeaderShoppingBagGroup} onClick={launchCartOverlay}>
-                    <Image src="/images/bag.svg" height={18} width={16} alt="Shopping Bag" />
-                    <span className={styles.pageHeaderShoppingBagItemsCount}>x4</span>
-                </div> */}
                 <ShoppingBagCTA />
             </div>
         </header>

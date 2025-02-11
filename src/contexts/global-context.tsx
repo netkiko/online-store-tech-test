@@ -37,8 +37,23 @@ export const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const deleteCartItem = (id: number) => {
-        const newCartItems = cartItems.filter((d) => d.id === id);
+        const newCartItems = cartItems.filter((d) => d.id !== id);
         setCartItems([...newCartItems]);
+    };
+
+    const updateOrderQuantity = (id: number, quantity: number) => {
+        let newQuantity = quantity;
+        let currentCartItems = [...cartItems];
+        const currProductIdx = currentCartItems.findIndex((p) => p.id === id);
+        if (newQuantity <= 0) newQuantity = 1; // default to 1
+        if (currentCartItems[currProductIdx].quantity !== newQuantity) {
+            currentCartItems[currProductIdx].quantity = newQuantity;
+            currentCartItems[currProductIdx].amount =
+                currentCartItems[currProductIdx].quantity * currentCartItems[currProductIdx].price;
+            setCartItems([...currentCartItems]);
+            setTotalQuantity(currentCartItems.reduce((acc, item) => acc + item.quantity, 0));
+            setTotalAmount(currentCartItems.reduce((sum, item) => sum + item.amount, 0));
+        }
     };
 
     const launchCartOverlay = () => {
@@ -58,6 +73,7 @@ export const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
                 showCartOverlay,
                 addCartItem,
                 deleteCartItem,
+                updateOrderQuantity,
                 launchCartOverlay,
                 hideCartOverlay,
             }}

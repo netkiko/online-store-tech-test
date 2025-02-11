@@ -1,9 +1,15 @@
 .cartOverlayDialog {
-    @apply modal modal-open w-full items-start;
+    @apply modal modal-open modal-top w-full flex items-start justify-center bg-black bg-opacity-20;
+    @apply mt-[65px] pt-0;
+}
+
+.cartOverlayMainWrapper {
+    @apply w-full max-w-7xl flex items-center justify-end;
+    /* background-color: green; */
 }
 
 .cartOverlayWrapper {
-    @apply modal-box max-w-full flex-col mt-[65px] w-full py-[20px] px-[10px];
+    @apply w-full modal-box flex flex-col py-[20px] px-[12px];
 }
 
 .cartOverlayHeaderWrapper {
