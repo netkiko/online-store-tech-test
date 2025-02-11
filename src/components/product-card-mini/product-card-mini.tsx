@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
+import { useState } from "react";
 import { Trash2 } from "lucide-react";
+import Image from "next/image";
 import { ICartItems } from "@/src/types/cart-items";
 import { useGlobalContext } from "@/src/contexts/global-context";
 import styles from "./product-card-mini.module.css";
-import { useState } from "react";
 
 const ProductCardMini = ({ product }: { product: ICartItems }) => {
     const { deleteCartItem, updateOrderQuantity } = useGlobalContext();

@@ -5,3 +5,7 @@
 .btnSecondary {
     @apply btn btn-success w-full rounded-xl text-white font-bold mt-[20px];
 }
+
+.btnTertiary {
+    @apply btn bg-black w-full rounded-xl text-white font-bold mt-[20px];
+}

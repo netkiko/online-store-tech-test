@@ -1,5 +1,5 @@
-import ProductCard from "@/src/components/product-card";
 import { IProducts } from "@/src/types/products";
+import ProductCard from "@/src/components/product-card";
 import styles from "./products.module.css";
 
 const ProductsHome = ({ products }: { products: IProducts[] }) => {

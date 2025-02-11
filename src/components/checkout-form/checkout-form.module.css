@@ -1,0 +1,23 @@
+.checkoutFormWrapper {
+    @apply w-full h-auto flex flex-col items-start justify-start;
+}
+
+.checkoutFormHeader {
+    @apply text-base font-medium py-[20px];
+}
+
+.checkoutFormExpiryCVCGroup {
+    @apply w-full flex items-center justify-start gap-[20px];
+}
+
+.checkoutFormExpiryContainer {
+    @apply w-[65%];
+}
+
+.checkoutFormCVCContainer {
+    @apply w-[35%];
+}
+
+.checkoutFormDivider {
+    @apply w-full h-px mt-[16px];
+}

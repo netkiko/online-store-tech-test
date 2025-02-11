@@ -1,0 +1,28 @@
+.orderConfirmationOverlayDialog {
+    @apply modal modal-open modal-top w-full flex items-start justify-center bg-black bg-opacity-20;
+    @apply mt-[65px] pt-0;
+}
+
+.orderConfirmationOverlayMainWrapper {
+    @apply w-full max-w-7xl flex items-center justify-end;
+}
+
+.orderConfirmationOverlayWrapper {
+    @apply w-full modal-box flex flex-col items-start justify-start py-[20px] px-[12px];
+}
+
+.orderConfirmationOverlayHeaderWrapper {
+    @apply w-full flex items-center justify-between;
+}
+
+.orderConfirmationOverlayTitle {
+    @apply font-bold text-lg text-left text-[#000000];
+}
+
+.orderConfirmationOverlayDivider {
+    @apply w-full h-px mt-[16px];
+}
+
+.orderConfirmationOverlayThankYouText {
+    @apply w-full font-[#000000] text-center text-[32px] leading-[38.73px] pt-[30px];
+}

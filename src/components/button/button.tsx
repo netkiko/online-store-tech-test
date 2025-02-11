@@ -1,15 +1,7 @@
 import * as React from "react";
 import cn from "classnames";
+import { IButton } from "@/src/types/button";
 import styles from "./button.module.css";
-
-export interface IButton {
-    name: string;
-    type: "submit" | "reset" | "button";
-    className: string;
-    text: string;
-    variant: string;
-    onClick: () => void;
-}
 
 const Button: React.FC<IButton> = ({
     name = "btn-default",
@@ -24,7 +16,14 @@ const Button: React.FC<IButton> = ({
         <button
             name={name}
             type={type}
-            className={cn(variant === "primary" ? styles.btnPrimary : styles.btnSecondary, className)}
+            className={cn(
+                variant === "secondary"
+                    ? styles.btnSecondary
+                    : variant === "tertiary"
+                    ? styles.btnTertiary
+                    : styles.btnPrimary,
+                className
+            )}
             onClick={onClick}
             {...props}
         >

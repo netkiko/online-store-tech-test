@@ -1,0 +1,36 @@
+.checkoutOverlayDialog {
+    @apply modal modal-open modal-top w-full flex items-start justify-center bg-black bg-opacity-20;
+    @apply mt-[65px] pt-0;
+}
+
+.checkoutOverlayMainWrapper {
+    @apply w-full max-w-7xl flex items-center justify-end;
+}
+
+.checkoutOverlayWrapper {
+    @apply w-full modal-box flex flex-col items-start justify-start py-[20px] px-[12px];
+}
+
+.checkoutOverlayHeaderWrapper {
+    @apply w-full flex items-center justify-between;
+}
+
+.checkoutOverlayTitle {
+    @apply font-bold text-lg text-left text-[#000000];
+}
+
+.checkoutOverlayDivider {
+    @apply w-full h-px mt-[16px];
+}
+
+.checkoutOverlayOrdersContainer {
+    @apply w-full h-auto flex flex-col items-start justify-start pt-[30px];
+}
+
+.checkoutOverlayOrderSummaryWrapper {
+    @apply w-full flex items-center justify-center py-[20px];
+}
+
+.checkoutOverlayOrderSummaryText {
+    @apply text-lg font-medium font-[#000000];
+}

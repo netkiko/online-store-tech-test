@@ -2,11 +2,14 @@
 
 import Image from "next/image";
 import { useGlobalContext } from "@/src/contexts/global-context";
+import CartOverlay from "@/src/components/cart-overlay";
+import CheckoutOverlay from "@/src/components/checkout-overlay";
+import OrderConfirmationOverlay from "@/src/components/order-confirmation-overlay";
 import styles from "./shopping-bag-cta.module.css";
-import CartOverlay from "../cart-overlay";
 
 const ShoppingBagCTA = () => {
-    const { showCartOverlay, totalQuantity, launchCartOverlay } = useGlobalContext();
+    const { showCartOverlay, showCheckoutOverlay, showOrderConfirmationOverlay, totalQuantity, launchCartOverlay } =
+        useGlobalContext();
 
     return (
         <div>
@@ -15,6 +18,8 @@ const ShoppingBagCTA = () => {
                 <span className={styles.shoppingBagCTAItemsCount}>x{totalQuantity}</span>
             </button>
             {showCartOverlay && <CartOverlay />}
+            {showCheckoutOverlay && <CheckoutOverlay />}
+            {showOrderConfirmationOverlay && <OrderConfirmationOverlay />}
         </div>
     );
 };

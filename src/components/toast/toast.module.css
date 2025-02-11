@@ -1,0 +1,36 @@
+.toastWrapper {
+    @apply toast toast-top toast-center w-full max-w-[500px] mt-[65px] bg-transparent px-[20px] z-[9999];
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.toastAlert {
+    @apply alert w-full flex items-center justify-between gap-[8px] text-sm;
+}
+
+.toastinfo {
+    @apply alert-info text-white;
+}
+
+.toastsuccess {
+    @apply alert-success text-white;
+}
+
+.toastwarning {
+    @apply alert-warning text-white;
+}
+
+.toasterror {
+    @apply alert-error text-white;
+}
+
+.toastMessage {
+    @apply text-wrap text-left;
+}
+
+.toastBtnWrapper {
+    @apply flex;
+}

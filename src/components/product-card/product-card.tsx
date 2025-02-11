@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { Star } from "lucide-react";
+import Image from "next/image";
 import { IProducts } from "@/src/types/products";
 import { useGlobalContext } from "@/src/contexts/global-context";
 import Button from "@/src/components/button";

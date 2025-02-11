@@ -1,0 +1,19 @@
+.textInputWrapper {
+    @apply form-control w-full;
+}
+
+.textInputLabelContainer {
+    @apply label;
+}
+
+.textInputLabel {
+    @apply label-text;
+}
+
+.textInputClassName {
+    @apply input input-bordered w-full h-[42px] text-[#000000];
+}
+
+.textInputError {
+    @apply label-text-alt text-red-500;
+}

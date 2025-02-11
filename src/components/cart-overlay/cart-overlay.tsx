@@ -1,14 +1,14 @@
 "use client";
 
-import cx from "classnames";
 import { CircleX } from "lucide-react";
+import cx from "classnames";
 import { useGlobalContext } from "@/src/contexts/global-context";
+import Button from "@/src/components/button";
+import ProductCardMini from "@/src/components/product-card-mini";
 import styles from "./cart-overlay.module.css";
-import ProductCardMini from "../product-card-mini";
-import Button from "../button";
 
 const CartOverlay = () => {
-    const { cartItems, hideCartOverlay } = useGlobalContext();
+    const { cartItems, hideCartOverlay, launchCheckoutOverlay } = useGlobalContext();
 
     return (
         <dialog id="cart-overlay" className={cx(styles.cartOverlayDialog)}>
@@ -21,7 +21,7 @@ const CartOverlay = () => {
                         </button>
                     </div>
                     <hr className={styles.cartOverlayDivider} />
-                    <div>
+                    <div className={styles.cartOverlayOrdersContainer}>
                         {cartItems.map((item) => {
                             return <ProductCardMini key={item.id} product={item} />;
                         })}
@@ -31,7 +31,7 @@ const CartOverlay = () => {
                         type="button"
                         variant="secondary"
                         className=""
-                        onClick={() => {}}
+                        onClick={launchCheckoutOverlay}
                         text="Checkout"
                     />
                 </div>
