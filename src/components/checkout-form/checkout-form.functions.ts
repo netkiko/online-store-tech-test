@@ -2,6 +2,16 @@ import isEmpty from "validator/lib/isEmpty";
 import isEmail from "validator/lib/isEmail";
 import { ICheckoutForm } from "@/src/types/checkout-form";
 
+const validateExpiryFormat = (expiry: string) => {
+    const pattern = /^(0[1-9]|1[012])\/\d{2}$/;
+    return pattern.test(expiry);
+};
+
+const validateCVC = (cvc: string) => {
+    const pattern = /^[0-9]{3,4}$/;
+    return pattern.test(cvc);
+};
+
 export const validateCheckoutForm = {
     email: (value: string) => {
         if (isEmpty(value)) return "Please enter Email.";
@@ -26,10 +36,12 @@ export const validateCheckoutForm = {
     },
     expiryDate: (value: string) => {
         if (isEmpty(value)) return "Please enter Expiry Date.";
+        if (!validateExpiryFormat(value)) return "Please enter a valid Expiry.";
         return "";
     },
     cvc: (value: string) => {
         if (isEmpty(value)) return "Please enter CVC.";
+        if (!validateCVC(value)) return "Please a valid CVC.";
         return "";
     },
 };

@@ -32,7 +32,7 @@ const TextInput: React.FC<ITextInput> = React.forwardRef(function TextInput(
                 onChange={onChange}
                 onBlur={onBlur}
                 placeholder={placeholder}
-                className={cn(styles.textInputClassName, className)}
+                className={cn(styles.textInputClassName, errorText && styles.textInputBorderError, className)}
                 disabled={disabled}
             />
             <div className={styles.textInputLabelContainer}>

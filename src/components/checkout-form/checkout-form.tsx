@@ -64,6 +64,7 @@ const CheckoutForm = () => {
                         label="Expiry (MM/YY)"
                         value={checkoutForm.expiryDate}
                         onChange={handleFieldChange}
+                        placeholder="99/99"
                         errorText={checkoutFormError.expiryDate}
                     />
                 </div>
