@@ -5,8 +5,9 @@ import { IGlobalContext } from "@/src/types/global-context";
 import { ICartItems } from "@/src/types/cart-items";
 import { IProducts } from "@/src/types/products";
 import { IToast } from "@/src/types/toast";
-import { ICheckoutForm } from "../types/checkout-form";
-import { getBatchValidationList, validateCheckoutForm } from "../components/checkout-form/checkout-form.functions";
+import { ICheckoutForm } from "@/src/types/checkout-form";
+import { CHECKOUT_FIELDS_INITVAL } from "@/src/components/checkout-form/checkout-form.config";
+import { getBatchValidationList, validateCheckoutForm } from "@/src/components/checkout-form/checkout-form.functions";
 
 export const GlobalContext = createContext<IGlobalContext | undefined>(undefined);
 
@@ -24,24 +25,8 @@ export const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
         innerClassName: "",
     });
     const [showToast, setShowToast] = useState<boolean>(false);
-    const [checkoutForm, setCheckoutForm] = useState<ICheckoutForm>({
-        email: "",
-        name: "",
-        address: "",
-        cardNumber: "",
-        nameOnCard: "",
-        expiryDate: "",
-        cvc: "",
-    });
-    const [checkoutFormError, setCheckoutFormError] = useState<ICheckoutForm>({
-        email: "",
-        name: "",
-        address: "",
-        cardNumber: "",
-        nameOnCard: "",
-        expiryDate: "",
-        cvc: "",
-    });
+    const [checkoutForm, setCheckoutForm] = useState<ICheckoutForm>(CHECKOUT_FIELDS_INITVAL);
+    const [checkoutFormError, setCheckoutFormError] = useState<ICheckoutForm>(CHECKOUT_FIELDS_INITVAL);
 
     useEffect(() => {
         if (totalQuantity === 0) {
@@ -54,6 +39,8 @@ export const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
         setCartItems([]);
         setTotalQuantity(0);
         setTotalAmount(0);
+        setCheckoutForm(CHECKOUT_FIELDS_INITVAL);
+        setCheckoutFormError(CHECKOUT_FIELDS_INITVAL);
     };
 
     const addCartItem = (product: IProducts) => {
@@ -127,7 +114,7 @@ export const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
         }));
     };
 
-    const handleFieldValidation = ({ fieldName, fieldValue, validateField }: any) => {
+    const validateCheckoutField = ({ fieldName, fieldValue, validateField }: any) => {
         const errorText = validateField(fieldValue);
         setCheckoutFormError((prev) => ({
             ...prev,
@@ -137,11 +124,11 @@ export const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
         return errorText;
     };
 
-    const handleBatchFieldValidation = () => {
+    const handleBatchCheckoutFormValidation = () => {
         const validationList = getBatchValidationList(checkoutForm, validateCheckoutForm);
         let formHasError = false;
         for (let i = 0; i < validationList.length; i += 1) {
-            const fieldErrorMsg = handleFieldValidation({
+            const fieldErrorMsg = validateCheckoutField({
                 fieldName: validationList[i].fieldName,
                 fieldValue: validationList[i].fieldValue,
                 validateField: validationList[i].validateField,
@@ -163,12 +150,14 @@ export const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const hideCheckoutOverlay = () => {
+        setCheckoutForm(CHECKOUT_FIELDS_INITVAL);
+        setCheckoutFormError(CHECKOUT_FIELDS_INITVAL);
         showCheckoutOverlay && setShowCheckoutOverlay(false);
     };
 
     const launchOrderConfirmationOverlay = () => {
         if (totalQuantity === 0) return;
-        if (!handleBatchFieldValidation()) {
+        if (!handleBatchCheckoutFormValidation()) {
             showCheckoutOverlay && setShowCheckoutOverlay(false);
             !showOrderConfirmationOverlay && setShowOrderConfirmationOverlay(true);
             resetShoppingCartStates();
@@ -182,10 +171,6 @@ export const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
     const hideToast = () => {
         showToast && setShowToast(false);
     };
-
-    useEffect(() => {
-        console.log(checkoutFormError);
-    }, [checkoutFormError]);
 
     return (
         <GlobalContext.Provider
