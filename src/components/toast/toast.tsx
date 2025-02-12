@@ -9,23 +9,18 @@ const Toast: React.FC = () => {
     const { showToast, toast, hideToast } = useGlobalContext();
     const { type = "success", textMessage = "", outerClassName = "", innerClassName = "" } = toast;
 
+    const toastClassByType = {
+        success: styles.toastsuccess,
+        info: styles.toastinfo,
+        warning: styles.toastwarning,
+        error: styles.toasterror,
+    };
+
     if (!showToast) return null;
 
     return (
         <div className={cn(styles.toastWrapper, outerClassName)}>
-            <div
-                className={cn(
-                    type === "success"
-                        ? styles.toastsuccess
-                        : type === "info"
-                        ? styles.toastinfo
-                        : type === "warning"
-                        ? styles.toastwarning
-                        : styles.toasterror,
-                    styles.toastAlert,
-                    innerClassName
-                )}
-            >
+            <div className={cn(toastClassByType[type], styles.toastAlert, innerClassName)}>
                 <span className={styles.toastMessage}>{textMessage}</span>
                 <button name="hide-toast" type="button" onClick={hideToast} className={styles.toastBtnWrapper}>
                     <CircleX color="#FFFFFF" size={24} />
